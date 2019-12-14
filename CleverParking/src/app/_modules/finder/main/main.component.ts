@@ -11,48 +11,54 @@ export class MainComponent implements AfterViewInit, OnInit {
   constructor(private http: HttpClient){
 
   }
-  title = 'angular-gmap';
-  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
-  map: google.maps.Map;
-  lat = 45.6486;
-  lng = 25.6061;
-  radius = 50000;
+  lat: number = 51.678418;
+  latPlace: number =  51.678418;;
+  lng: number = 7.809007;
+  lngPlace: number = 7.809007;
+  radius:number = 50000;
+  selectedPlace = 0;
 
-  coordinates = new google.maps.LatLng(this.lat, this.lng);
+  ngOnInit() {
+    this.data = []
 
-  mapOptions: google.maps.MapOptions = {
-    center: this.coordinates,
-    zoom: 8
-  };
-
-  marker = new google.maps.Marker({
-    position: this.coordinates,
-    map: this.map,
-  });
-
-  ngAfterViewInit() {
-    this.mapInitializer();
-  }
-
-  ngOnInit(){
     var query = `?location=` + this.lat + "," + this.lng + `
     &radius=`+ this.radius + `
     &key=AIzaSyBEgEtjNunnLyyIBVO0ZlCh3gReySJZhkQ
     &callback=foo`;
-    this.http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + query)
+    this.http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + query,
+      ).subscribe(places => { 
+        places["results"].forEach((place,index) => {
+          console.log(place)
+          var a = {
+            id: index,
+            name: place["name"],
+            lat: place["geometry"]["location"]["lat"],
+            lng: place["geometry"]["location"]["lng"]
+          };
+          //new Place(,,,place);
+          this.data.push(a);
+          
+        });
+      });
   }
 
-  mapInitializer() {
-    this.map = new google.maps.Map(this.gmap.nativeElement,
-      this.mapOptions);
-    this.marker.setMap(this.map);
+  ngAfterViewInit(){
+    console.log(this.data);
   }
 
-  data:Place[];
+  data;
   keyword = 'name';
 
+  setMarkerLocation($event){
+    this.selectedPlace = 1;
+    this.latPlace = $event.coords.lat;
+    this.lngPlace = $event.coords.lng;
+  }
+
   selectEvent(item) {
-    // do something with selected item
+    this.selectedPlace = 1;
+    this.latPlace = item["lat"];
+    this.lngPlace = item["lng"];
   }
 
   onChangeSearch(val: string) {
