@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, ExtraOptions} from '@angular/router';
 import { MainComponent } from './main/main.component';
+import { ParkingsComponent } from './parkings/parkings.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full'},
-  { path: 'main', component: MainComponent},
+  { path: 'main', component: ParkingsComponent},
 ];
 
 const routerOptions: ExtraOptions = {
