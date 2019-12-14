@@ -40,4 +40,17 @@
       <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
       </agm-marker>
   </agm-map>
+  <div class="inner" style="color:white">
+    <img class="logo" src="/assets/logoPark.png">
+    <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeHolder="Find an atraction (restaurant, museum, etc.)" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+        <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div>
 </div>
