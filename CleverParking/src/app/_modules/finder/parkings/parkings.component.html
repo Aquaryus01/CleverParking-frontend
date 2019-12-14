@@ -1,28 +1,51 @@
 <section>
-  <img class="logo" src="/assets/logoPark.png">
+    <img class="logo" src="/assets/logoPark.png">
     <div class="parking-container">
         <div class="left-side">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div>
+                <br>
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div style="width:100%" class="padding-card">
+                            <div>
+                                <!-- <div style="display:flex; justify-content: space-between;">
+                                    <div>
+                                        <h2>Parcarea de la primarie</h2>
+                                    </div>
+                                    <div>
+                                        <img style="width: 50px;" class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text=.card-img-top" alt="Card image cap">
+                                    </div>
+                                    <h2 style="text-align: right">Parca</h2>
+                                    <hr>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p style="text-align:left;">
+                                            This text is left aligned</p>
+                                    </div>
+                                    <div class="col-6" style="text-align:right">
+                                        <img style="width:100px;" class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text=.card-img-top" alt="Card image cap">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div>
+                                <hr>
+                                <h2 style="text-align: left;">Locuri: 20/30</h2>
+                                <h2 style="text-align: left;">Probabilitate 30%</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title2">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
         </div>
+        <br>
+        <br>
         <div class="right-side">
-          <div #mapContainer id="map"></div>
-          <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-          </ng-autocomplete>
+            <div #mapContainer id="map"></div>
+            <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
         </div>
+
     </div>
 </section>

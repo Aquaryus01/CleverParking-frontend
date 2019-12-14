@@ -27,6 +27,7 @@ export class ParkingsComponent implements OnInit {
       var a = {lat: latParam, long: longParam, hour: todayTimeHour};
       this.http.post(this.settings.URL + "find_nearest", JSON.stringify(a))
       .subscribe((parkingPlaces) => {
+        console.log(parkingPlaces);
           let list = parkingPlaces["response"];
           list.forEach((element,index) => {
             this.data.push(new ParkingPlace(index, element["name"], element["lat"], element["long"],element["distance"]))
