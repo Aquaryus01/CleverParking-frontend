@@ -7,7 +7,7 @@
             <div class="inner" style="color:white">
                 <h1 style="-webkit-text-stroke: 4px;">Do it quick, fast and easy!</h1>
                 <div style="margin-top:20px">
-                    <button href="#" class="btn btn-primary mr-2">Let's do it</button>
+                    <button (click)="sendPlacelocation()" class="btn btn-primary mr-2">Let's do it</button>
                 </div>
                 <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
                     <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
