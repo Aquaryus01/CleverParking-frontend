@@ -2,13 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Place } from 'src/app/_models/place';
+import { SettingsService } from 'src/app/_services/settings.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements AfterViewInit, OnInit {
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient,
+              private settings: SettingsService,
+              private router: Router){
 
   }
   lat: number = 51.678418;
@@ -56,9 +60,14 @@ export class MainComponent implements AfterViewInit, OnInit {
   }
 
   selectEvent(item) {
+    console.log(this.settings.getURL());
     this.selectedPlace = 1;
     this.latPlace = item["lat"];
     this.lngPlace = item["lng"];
+  }
+
+  sendPlacelocation(){
+      this.router.navigate(['/parkings'], {queryParams: {lat: this.latPlace, long: this.lngPlace}});
   }
 
   onChangeSearch(val: string) {

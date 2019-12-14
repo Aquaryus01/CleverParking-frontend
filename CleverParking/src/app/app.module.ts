@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FinderModule } from './_modules/finder/finder.module';
+import { SettingsService } from './_services/settings.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -11,7 +12,7 @@ import { FinderModule } from './_modules/finder/finder.module';
     BrowserModule,
     FinderModule
   ],
-  providers: [],
+  providers: [SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

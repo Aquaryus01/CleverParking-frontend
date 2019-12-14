@@ -6,6 +6,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { HttpClientModule } from '@angular/common/http';
 import { ParkingsComponent } from './parkings/parkings.component';
 import { AgmCoreModule } from '@agm/core';
+import { SettingsService } from 'src/app/_services/settings.service';
 
 @NgModule({
   declarations: [MainComponent, ParkingsComponent],
@@ -19,6 +20,7 @@ import { AgmCoreModule } from '@agm/core';
     AutocompleteLibModule,
     HttpClientModule,
   ],
+  providers:[SettingsService],
   exports: [FinderRoutingModule]
 })
 export class FinderModule { }
