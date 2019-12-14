@@ -18,11 +18,15 @@ export class MainComponent implements AfterViewInit, OnInit {
   lat: number = 51.678418;
   latPlace: number =  51.678418;;
   lng: number = 7.809007;
+  lat2 = 51.678418;
+  lng2 =  7.809007;
   lngPlace: number = 7.809007;
   radius:number = 50000;
   selectedPlace = 0;
 
   ngOnInit() {
+    navigator.geolocation.watchPosition(res => console.log("RES:" + res));
+
     this.data = []
 
     var query = `?location=` + this.lat + "," + this.lng + `

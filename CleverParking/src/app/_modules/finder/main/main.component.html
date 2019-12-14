@@ -1,56 +1,60 @@
 <section>
     <div class="outer">
         <div class="middle">
-          <!-- <div class="logo">
+            <!-- <div class="logo">
             <img src="/assets/logoPark.png">
           </div> -->
-          <br><br>
+            <br><br>
             <div class="inner" style="color:white">
-              <img class="logo" src="/assets/logoPark.png">
+                <img class="logo" src="/assets/logoPark.png">
                 <h1 style="-webkit-text-stroke: 4px;">Do it quick, fast and easy!</h1>
             </div>
-                <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeHolder="Find an atraction (restaurant, museum, etc.)" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-                </ng-autocomplete>
+            <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeHolder="Find an atraction (restaurant, museum, etc.)" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
 
-                <ng-template #itemTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                </ng-template>
+            <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+            </ng-template>
 
-                <ng-template #notFoundTemplate let-notFound>
-                    <div [innerHTML]="notFound"></div>
-                </ng-template>
+            <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+            </ng-template>
 
-                <!-- <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
+            <!-- <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
                     <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
                     </agm-marker>
                 </agm-map> -->
             <div class="map">
-            <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
-                <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
-                </agm-marker>
-            </agm-map>
-            <button (click)="sendPlacelocation()" class="btn btn-primary mr-2">Let's do it! </button>
+                <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]='lat' [longitude]='lng' [label]="'S'">
+                    </agm-marker>
+                </agm-map>
+                <button (click)="sendPlacelocation()" class="btn btn-primary mr-2">Let's do it! </button>
             </div>
         </div>
     </div>
 </section>
 <div class="mobile">
-  <div class="map-mobile">
-  <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
-      <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
-      </agm-marker>
-  </agm-map>
-  <div class="inner" style="color:white">
-    <img class="logo" src="/assets/logoPark.png">
-    <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeHolder="Find an atraction (restaurant, museum, etc.)" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-    </ng-autocomplete>
+    <div class="map-mobile">
+        <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
+            <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
+            </agm-marker>
+            <agm-marker [latitude]='lat' [longitude]='lng' [iconUrl]=" {url: '/assets/position.png', scaledSize: {height: 60, width: 60}}">
+            </agm-marker>
+        </agm-map>
+        <div class="inner" style="color:white">
+            <img class="logo" src="/assets/logoPark.png">
+            <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeHolder="Find an atraction (restaurant, museum, etc.)" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
 
-    <ng-template #itemTemplate let-item>
-        <a [innerHTML]="item.name"></a>
-    </ng-template>
+            <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+            </ng-template>
 
-    <ng-template #notFoundTemplate let-notFound>
-        <div [innerHTML]="notFound"></div>
-    </ng-template>
-  </div>
-</div>
+            <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+            </ng-template>
+        </div>
+    </div>
