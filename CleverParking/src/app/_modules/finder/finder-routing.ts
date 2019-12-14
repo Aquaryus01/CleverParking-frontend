@@ -6,7 +6,7 @@ import { ParkingsComponent } from './parkings/parkings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full'},
-  { path: 'main', component: ParkingsComponent},
+  { path: 'main', component: MainComponent},
 ];
 
 const routerOptions: ExtraOptions = {
