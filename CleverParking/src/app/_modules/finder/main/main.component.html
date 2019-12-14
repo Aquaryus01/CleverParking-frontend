@@ -1,13 +1,23 @@
 <section>
-   <div class="outer">
-       <div class="middle">
-           <div class="inner" style="color:white">
-               <h1 style="-webkit-text-stroke: 4px white;">Do it quick, fast and easy!</h1>
-               <div style="margin-top:20px">
-                   <button href="#" class="btn btn-primary mr-2" >Let's do it</button>
-               </div>
-           </div>
-       </div>
-   </div>
+    <div class="outer">
+        <div class="middle">
+            <div class="inner" style="color:white">
+                <h1 style="-webkit-text-stroke: 4px white;">Do it quick, fast and easy!</h1>
+                <div style="margin-top:20px">
+                    <button href="#" class="btn btn-primary mr-2">Let's do it</button>
+                </div>
+                <div #mapContainer id="map"></div>
+                <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
 </section>
-<h1>sal</h1>
