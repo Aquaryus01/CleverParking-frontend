@@ -25,8 +25,9 @@ export class MainComponent implements AfterViewInit, OnInit {
   selectedPlace = 0;
 
   ngOnInit() {
-    navigator.geolocation.watchPosition(res => console.log("RES:" + res));
-
+    navigator.geolocation.watchPosition(res => {
+      this.lat = res["coords"]["latitude"];
+      this.lng = res["coords"]["longitude"];
     this.data = []
 
     var query = `?location=` + this.lat + "," + this.lng + `
@@ -48,6 +49,7 @@ export class MainComponent implements AfterViewInit, OnInit {
           
         });
       });
+    });
   }
 
   ngAfterViewInit(){
