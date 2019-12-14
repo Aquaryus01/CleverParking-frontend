@@ -6,7 +6,12 @@
                 <div style="margin-top:20px">
                     <button href="#" class="btn btn-primary mr-2">Let's do it</button>
                 </div>
-                <div #mapContainer id="map"></div>
+                <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
+                    <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
+                    </agm-marker>
+                </agm-map>
+
+
                 <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
                 </ng-autocomplete>
 
