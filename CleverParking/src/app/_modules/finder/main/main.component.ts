@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Place } from 'src/app/_models/place';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -38,8 +39,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     &radius=`+ this.radius + `
     &key=AIzaSyBEgEtjNunnLyyIBVO0ZlCh3gReySJZhkQ
     &callback=foo`;
-    this.http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + query,
-      ).subscribe(x => console.log(x));
+    this.http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + query)
   }
 
   mapInitializer() {
@@ -48,18 +48,8 @@ export class MainComponent implements AfterViewInit, OnInit {
     this.marker.setMap(this.map);
   }
 
+  data:Place[];
   keyword = 'name';
-  data = [
-    {
-      id: 1,
-      name: 'Usa'
-    },
-    {
-      id: 2,
-      name: 'England'
-    }
-  ];
-
 
   selectEvent(item) {
     // do something with selected item
