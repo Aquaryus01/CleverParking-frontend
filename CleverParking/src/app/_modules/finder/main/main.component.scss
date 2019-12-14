@@ -1,0 +1,29 @@
+.outer {
+    display: table;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    /*whatever width you want*/
+}
+
+section {
+    width: 100%;
+    padding: 0 7%;
+    display: table;
+    margin: 0;
+    max-width: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/backgroundMenu.jpeg) center;
+    height: 100vh;
+}
