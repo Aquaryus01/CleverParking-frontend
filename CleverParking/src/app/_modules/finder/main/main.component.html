@@ -34,3 +34,10 @@
         </div>
     </div>
 </section>
+<div class="mobile">
+  <div class="map-mobile">
+  <agm-map (mapClick)="setMarkerLocation($event)" [latitude]="lat" [longitude]="lng">
+      <agm-marker *ngIf="selectedPlace==1" [latitude]="latPlace" [longitude]="lngPlace" [label]="'M'">
+      </agm-marker>
+  </agm-map>
+</div>
