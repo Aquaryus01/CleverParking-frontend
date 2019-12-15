@@ -31,7 +31,7 @@
                 <ion-card-subtitle>{{element.now_cars}}/{{element.max_cars}} parked cars</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
-                <ion-icon name="speedometer" slot="cars"></ion-icon> Chances to park there: <br><br>
+                <ion-icon name="speedometer" slot="cars"></ion-icon> Chances to be full: <br><br>
                 <ion-progress-bar style="color: red"[value]="element.full/100"></ion-progress-bar><br>
                 <ion-icon name="pin" slot="start"></ion-icon> Address: {{element.address}}<br>
                 <ion-icon name="send" slot="start"></ion-icon> Distance: {{element.distance | number}}Km<br>
