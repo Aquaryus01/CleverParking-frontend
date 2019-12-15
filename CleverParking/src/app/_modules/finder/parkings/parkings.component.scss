@@ -19,6 +19,13 @@
 //   margin-top: 50px;
 //   border-radius: 30px;
 // }
+ion-scroll[direction=x] {
+  width: 100vw;
+}
+ion-scroll[direction=y] {
+  height: 100vh;
+}
+
 .logo {
     padding-top: 50px;
     width: 400px;

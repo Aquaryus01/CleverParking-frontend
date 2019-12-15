@@ -30,6 +30,7 @@ export class MainComponent implements AfterViewInit, OnInit {
       console.log("test2")
       this.lat = res["coords"]["latitude"];
       this.lng = res["coords"]["longitude"];
+      this.settings.setStart(this.lat + "," + this.lng);
     this.data = []
 
     var query = `?location=` + this.lat + "," + this.lng + `
@@ -37,7 +38,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     &key=AIzaSyBEgEtjNunnLyyIBVO0ZlCh3gReySJZhkQ
     &callback=foo`;
     this.http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + query,
-      ).subscribe(places => { 
+      ).subscribe(places => {
         places["results"].forEach((place,index) => {
           console.log(place)
           var a = {
@@ -48,7 +49,7 @@ export class MainComponent implements AfterViewInit, OnInit {
           };
           //new Place(,,,place);
           this.data.push(a);
-          
+
         });
       });
     });

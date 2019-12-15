@@ -1,3 +1,4 @@
+<ion-content>
 <section>
     <!-- <img routerLink="/main" class="logo" src="/assets/logoPark.png"> -->
     <div style="background-color: black; width:100%; height: 60px;"></div>
@@ -25,68 +26,21 @@
             </ion-row>
         </div>
 
-        <ion-card routerLink="/main" color="white" style="font-family:Montserrat, sans-serif">
+        <ion-card *ngFor="let element of data" (click)="goToLink(element.lat, element.long)" color="white" style="font-family:Montserrat, sans-serif">
             <ion-card-header>
-                <ion-card-title>Card Title</ion-card-title>
-                <ion-card-subtitle>0/65 parked cars</ion-card-subtitle>
+                <ion-card-title>{{element.name}}</ion-card-title>
+                <ion-card-subtitle>{{element.now_cars}}/{{element.max_cars}} parked cars</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
                 <ion-icon name="speedometer" slot="cars"></ion-icon> Chances to park there: <br><br>
-                <ion-progress-bar value="0.5"></ion-progress-bar><br>
-                <ion-icon name="pin" slot="start"></ion-icon> Address: Str. Herculane, nr. 6<br>
-                <ion-icon name="send" slot="start"></ion-icon> Distance: 250Km<br>
-                <ion-icon name="cash" slot="cars"></ion-icon> Price: 15Lei<br>
+                <ion-progress-bar [value]="element.full/100"></ion-progress-bar><br>
+                <ion-icon name="pin" slot="start"></ion-icon> Address: {{element.address}}<br>
+                <ion-icon name="send" slot="start"></ion-icon> Distance: {{element.distance | number}}Km<br>
+                <ion-icon name="cash" slot="cars"></ion-icon> Price: {{element.price}}Lei<br>
 
             </ion-card-content>
         </ion-card>
 
-        <ion-card color="light">
-            <ion-card-header>
-                <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                <ion-card-title>Card Title</ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content>
-                Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
-            </ion-card-content>
-        </ion-card>
     </div>
-    <!-- <div class="parking-container">
-        <div class="left-side">
-            <div>
-                <br>
-                <div class="card">
-                    <div class="row no-gutters">
-                        <div style="width:100%" class="padding-card">
-                            <div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p style="text-align:left;">
-                                            This text is left aligned</p>
-                                    </div>
-                                    <div class="col-6" style="text-align:right">
-                                        <img style="width:100px;" class="card-img-top img-fluid" src="https://dummyimage.com/400x200/563d7c/ffffff&text=.card-img-topfff&text=.card-img-top" alt="Card image cap">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div>
-                                <hr>
-                                <h2 style="text-align: left;">Locuri: 20/30</h2>
-                                <h2 style="text-align: left;">Probabilitate 30%</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="right-side">
-            <div #mapContainer id="map"></div>
-            <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-            </ng-autocomplete>
-        </div>
-
-    </div> -->
 </section>
+        </ion-content>

@@ -14,11 +14,20 @@ export class ParkingsComponent implements OnInit {
   constructor( private route: ActivatedRoute,
     private http: HttpClient,
     private settings: SettingsService) { }
-  
+
   fil1 = 0;
   fil2 = 0;
   fil3 = 0;
   fil4 = 0;
+
+  goToLink(latFinish, longFinish)
+  {console.log("da")
+      var url = "https://www.google.com/maps/dir/" + this.settings.getStart()+
+                "/" + latFinish + "," + longFinish;
+      console.log(url)
+    window.open(url, "_blank");
+  }
+
   sortyBy(type){
     if(type=="price"){
       if(this.fil1==0)
@@ -71,11 +80,11 @@ export class ParkingsComponent implements OnInit {
         this.data = this.data.sort((x, y) => x["full"] > y["full"] ? 1 : -1);
       }
     }
-    
+
     console.log(this.data);
   }
 
-  data: ParkingPlace[];
+  data: ParkingPlace[] = [];
   ngOnInit() {
     this.data = [];
     this.route
@@ -87,14 +96,13 @@ export class ParkingsComponent implements OnInit {
       var a = {lat: latParam, long: longParam, hour: todayTimeHour};
       this.http.post(this.settings.URL + "find_nearest", JSON.stringify(a))
       .subscribe((parkingPlaces) => {
-        console.log(parkingPlaces);
           let list = parkingPlaces["response"];
+          this.data = [];
           list.forEach((element,index) => {
             this.data.push(new ParkingPlace(index, element["name"], element["lat"], element["long"],element["distance"],
             element["address"],element["full"],element["max_cars"],element["now_cars"],element["price"]))
           });
         });
-        console.log(this.data)
       })
   }
 
