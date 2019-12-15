@@ -1,10 +1,11 @@
 <ion-content>
 <section>
     <!-- <img routerLink="/main" class="logo" src="/assets/logoPark.png"> -->
-    <div style="background-color: black; width:100%; height: 60px;"></div>
+    <div style="background-color: black; width:100%; height: 60px;">
+      <ion-icon ios="ios-arrow-back" md="md-arrow-back" routerLink="/main" style="color:white; padding: 22px;"></ion-icon>
+    </div>
     <div style="background-color: white; width:100%; height: 129px;">
         <div style="margin-bottom:15px;padding-top:2px" class="container">
-
             <ion-row>
                 <ion-col size=12>
                     <h2>Filtrari:</h2>
@@ -21,8 +22,6 @@
                 <ion-col size=3>
                     <button (click)="sortyBy('statistic')" style="width:100%;" class="font_change btn btn-outline-dark">Statistic</button>
                 </ion-col>
-
-
             </ion-row>
         </div>
 
@@ -33,7 +32,7 @@
             </ion-card-header>
             <ion-card-content>
                 <ion-icon name="speedometer" slot="cars"></ion-icon> Chances to park there: <br><br>
-                <ion-progress-bar [value]="element.full/100"></ion-progress-bar><br>
+                <ion-progress-bar style="color: red"[value]="element.full/100"></ion-progress-bar><br>
                 <ion-icon name="pin" slot="start"></ion-icon> Address: {{element.address}}<br>
                 <ion-icon name="send" slot="start"></ion-icon> Distance: {{element.distance | number}}Km<br>
                 <ion-icon name="cash" slot="cars"></ion-icon> Price: {{element.price}}Lei<br>

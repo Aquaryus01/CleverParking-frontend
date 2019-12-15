@@ -57,6 +57,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit(){
     console.log(this.data);
+    console.log(this)
   }
 
   data;

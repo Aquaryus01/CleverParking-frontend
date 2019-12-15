@@ -20,6 +20,11 @@ export class ParkingsComponent implements OnInit {
   fil3 = 0;
   fil4 = 0;
 
+  getColor(nr:number){
+      console.log(nr);
+      return "red";
+  }
+
   goToLink(latFinish, longFinish)
   {console.log("da")
       var url = "https://www.google.com/maps/dir/" + this.settings.getStart()+
